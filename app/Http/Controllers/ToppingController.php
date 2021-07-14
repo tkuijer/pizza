@@ -44,7 +44,7 @@ class ToppingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Topping  $topping
+     * @param Topping $topping
      * @return \Illuminate\Http\Response
      */
     public function show(Topping $topping)
@@ -55,19 +55,19 @@ class ToppingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Topping  $topping
-     * @return \Illuminate\Http\Response
+     * @param Topping $topping
+     * @return View
      */
     public function edit(Topping $topping)
     {
-        //
+        return view('topping.edit', compact('topping'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Topping  $topping
+     * @param Topping $topping
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Topping $topping)
@@ -78,7 +78,7 @@ class ToppingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Topping  $topping
+     * @param Topping $topping
      * @return \Illuminate\Http\Response
      */
     public function destroy(Topping $topping)
