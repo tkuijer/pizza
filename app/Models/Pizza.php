@@ -9,6 +9,8 @@ class Pizza extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public static $validationRules = [
         'name' => 'required|unique:pizzas,name'
     ];

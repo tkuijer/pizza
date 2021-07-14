@@ -38,11 +38,17 @@ class PizzaController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StorePizzaRequest $request
-     * @return Response
+     * @return RedirectResponse
      */
     public function store(StorePizzaRequest $request)
     {
-        //
+        $pizza = Pizza::create([
+            'name' => $request->get('name')
+        ]);
+
+        return redirect()
+            ->route('pizza.edit', $pizza)
+            ->with('success', __('Pizza created successfully!'));
     }
 
     /**
