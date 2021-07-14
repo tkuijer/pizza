@@ -8,18 +8,9 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StorePizzaRequest;
 use App\Http\Requests\UpdatePizzaRequest;
-use App\Repository\Interfaces\PizzaRepositoryInterface;
-use App\Repository\Interfaces\ToppingsRepositoryInterface;
 
 class PizzaController extends Controller
 {
-
-    protected $pizzaRepository;
-
-    public function __construct(PizzaRepositoryInterface $pizzaRepository)
-    {
-        $this->pizzaRepository = $pizzaRepository;
-    }
 
     /**
      * Display a listing of the resource.
@@ -28,7 +19,7 @@ class PizzaController extends Controller
      */
     public function index()
     {
-        $pizzas = $this->pizzaRepository->all();
+        $pizzas = Pizza::all();
 
         return view('pizza.index', compact('pizzas'));
     }
@@ -51,7 +42,7 @@ class PizzaController extends Controller
      */
     public function store(StorePizzaRequest $request)
     {
-        $pizza = $this->pizzaRepository->createFromRequest($request);
+        //
     }
 
     /**
