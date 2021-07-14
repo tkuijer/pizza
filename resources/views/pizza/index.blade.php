@@ -12,32 +12,7 @@
                     <div class="mb-7 px-4 w-full">
                         <a href="{{ route('pizza.create') }}">+ Add a new pizza</a>
                     </div>
-                    <table class="w-full mx-2">
-                        <thead>
-                        <tr class="border-b">
-                            <th class="text-center px-2">ID</th>
-                            <th class="text-left">Name</th>
-                            <th>&nbsp;</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($pizzas as $pizza)
-                                <tr class="hover:bg-gray-200 py-2">
-                                    <td class="text-center px-2">
-                                        <a class="hover:underline inline-block w-full" href="{{ route('pizza.edit', $pizza) }}">
-                                            {{ $pizza->id }}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a class="hover:underline inline-block w-full" href="{{ route('pizza.edit', $pizza) }}">
-                                            {{ $pizza->name }}
-                                        </a>
-                                    </td>
-                                    <td class="text-right px-2">x +</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    @include('pizza.partials.listing', compact('pizzas'))
                 </div>
             </div>
         </div>
