@@ -12,6 +12,7 @@
                     <div class="mb-7 px-4 w-full">
                         <a href="{{ route('pizza.create') }}">+ Add a new pizza</a>
                     </div>
+                    <x-success />
                     @include('pizza.partials.listing', compact('pizzas'))
                 </div>
             </div>

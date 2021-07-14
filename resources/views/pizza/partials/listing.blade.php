@@ -22,7 +22,13 @@
                     </span>
                 </a>
             </td>
-            <td class="text-right px-2">x</td>
+            <td class="text-right px-2">
+                <form action="{{ route('pizza.destroy', $pizza) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">x</button>
+                </form>
+            </td>
         </tr>
     @endforeach
     </tbody>

@@ -96,10 +96,15 @@ class PizzaController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Pizza $pizza
-     * @return Response
+     * @return RedirectResponse
      */
     public function destroy(Pizza $pizza)
     {
-        //
+        $pizza->toppings()->detach();
+        $pizza->delete();
+
+        return redirect()
+            ->route('pizza.index')
+            ->with('success', __('Pizza deleted successfully!'));
     }
 }
