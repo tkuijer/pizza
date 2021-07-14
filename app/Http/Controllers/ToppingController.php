@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Topping;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\CreateToppingRequest;
 use App\Http\Requests\UpdateToppingRequest;
 
 class ToppingController extends Controller
@@ -35,12 +35,18 @@ class ToppingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CreateToppingRequest $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(CreateToppingRequest $request)
     {
-        //
+        $topping = Topping::create([
+            'name' => $request->get('name')
+        ]);
+
+        return redirect()
+            ->route('topping.edit', $topping)
+            ->with('success', __('Topping created succesfully!'));
     }
 
     /**

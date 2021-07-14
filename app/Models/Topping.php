@@ -9,6 +9,8 @@ class Topping extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public static $validationRules = [
         'name' => 'required|unique:toppings,name'
     ];
