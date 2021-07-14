@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Topping;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\UpdateToppingRequest;
 
 class ToppingController extends Controller
 {
@@ -66,13 +68,18 @@ class ToppingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param UpdateToppingRequest $request
      * @param Topping $topping
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function update(Request $request, Topping $topping)
+    public function update(UpdateToppingRequest $request, Topping $topping)
     {
-        //
+        $topping->name = $request->get('name');
+        $topping->save();
+
+        return redirect()
+            ->route('topping.edit', compact('topping'))
+            ->with('success', __('Topping updated successfully!'));
     }
 
     /**

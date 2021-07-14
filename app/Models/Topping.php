@@ -9,6 +9,10 @@ class Topping extends Model
 {
     use HasFactory;
 
+    public static $validationRules = [
+        'name' => 'required|unique:toppings,name'
+    ];
+
     public function pizzas()
     {
         return $this->belongsToMany(Pizza::class)->withPivot('quantity');
