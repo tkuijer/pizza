@@ -3,28 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pizza;
+use Illuminate\Http\Response;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StorePizzaRequest;
 use App\Http\Requests\UpdatePizzaRequest;
 use App\Repository\Interfaces\PizzaRepositoryInterface;
+use App\Repository\Interfaces\ToppingsRepositoryInterface;
 
 class PizzaController extends Controller
 {
 
-    protected $pizza_repository;
+    protected $pizzaRepository;
 
-    public function __construct(PizzaRepositoryInterface $pizza_repository)
+    public function __construct(PizzaRepositoryInterface $pizzaRepository)
     {
-        $this->pizza_repository = $pizza_repository;
+        $this->pizzaRepository = $pizzaRepository;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
     public function index()
     {
-        $pizzas = $this->pizza_repository->all();
+        $pizzas = $this->pizzaRepository->all();
 
         return view('pizza.index', compact('pizzas'));
     }
@@ -32,7 +36,7 @@ class PizzaController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
     public function create()
     {
@@ -42,19 +46,19 @@ class PizzaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StorePizzaRequest $request
+     * @return Response
      */
     public function store(StorePizzaRequest $request)
     {
-        $pizza = $this->pizza_repository->createFromRequest($request);
+        $pizza = $this->pizzaRepository->createFromRequest($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pizza  $pizza
-     * @return \Illuminate\Http\Response
+     * @param Pizza $pizza
+     * @return Response
      */
     public function show(Pizza $pizza)
     {
@@ -64,31 +68,38 @@ class PizzaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pizza  $pizza
-     * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\View
+     * @param Pizza $pizza
+     * @return Response|View
      */
     public function edit(Pizza $pizza)
     {
-        return view('pizza.edit', compact('pizza'));
+        $availableToppings = $pizza->getAvailableToppings();
+
+        return view('pizza.edit', compact('pizza', 'availableToppings'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  UpdatePizzaRequest  $request
-     * @param  \App\Models\Pizza  $pizza
-     * @return \Illuminate\Http\Response
+     * @param Pizza $pizza
+     * @return RedirectResponse
      */
     public function update(UpdatePizzaRequest $request, Pizza $pizza)
     {
-        //
+        $pizza->name = $request->get('name');
+        $pizza->save();
+
+        return redirect()
+            ->route('pizza.edit', $pizza)
+            ->with('success', __('Pizza updated successfully!'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pizza  $pizza
-     * @return \Illuminate\Http\Response
+     * @param Pizza $pizza
+     * @return Response
      */
     public function destroy(Pizza $pizza)
     {

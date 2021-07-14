@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\ToppingController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PizzaToppingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::middleware(['auth'])
         Route::resources([
             'pizza' => PizzaController::class,
             'topping' => ToppingController::class,
+            'pizza.toppings' => PizzaToppingsController::class,
         ]);
     });
 
