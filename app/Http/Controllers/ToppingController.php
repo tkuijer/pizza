@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Topping;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 
 class ToppingController extends Controller
@@ -10,11 +11,13 @@ class ToppingController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index()
     {
-        //
+        $toppings = Topping::all();
+
+        return view('topping.index', compact('toppings'));
     }
 
     /**
