@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Middleware\WithCart;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\ToppingController;
@@ -18,7 +20,13 @@ use App\Http\Controllers\PizzaToppingsController;
 |
 */
 
-Route::get('/', [IndexController::class, 'index'])->name('homepage');
+Route::get('/', [IndexController::class, 'index'])
+    ->name('homepage')
+    ->middleware(WithCart::class);
+
+Route::get('/add_pizza', [CartController::class, 'add_pizza'])
+    ->name('add_pizza_to_cart')
+    ->middleware(WithCart::class);
 
 Route::view('/tailwind', 'tailwind');
 
