@@ -19,7 +19,7 @@ class ToppingController extends Controller
     {
         $toppings = Topping::all();
 
-        return view('topping.index', compact('toppings'));
+        return view('admin.topping.index', compact('toppings'));
     }
 
     /**
@@ -29,7 +29,7 @@ class ToppingController extends Controller
      */
     public function create()
     {
-        return view('topping.create');
+        return view('admin.topping.create');
     }
 
     /**
@@ -68,7 +68,7 @@ class ToppingController extends Controller
      */
     public function edit(Topping $topping)
     {
-        return view('topping.edit', compact('topping'));
+        return view('admin.topping.edit', compact('topping'));
     }
 
     /**

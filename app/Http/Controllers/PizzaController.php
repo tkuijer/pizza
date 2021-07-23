@@ -21,7 +21,7 @@ class PizzaController extends Controller
     {
         $pizzas = Pizza::with('toppings')->get();
 
-        return view('pizza.index', compact('pizzas'));
+        return view('admin.pizza.index', compact('pizzas'));
     }
 
     /**
@@ -72,7 +72,7 @@ class PizzaController extends Controller
     {
         $availableToppings = $pizza->getAvailableToppings();
 
-        return view('pizza.edit', compact('pizza', 'availableToppings'));
+        return view('admin.pizza.edit', compact('pizza', 'availableToppings'));
     }
 
     /**
