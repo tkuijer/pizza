@@ -19,7 +19,7 @@ class PizzaController extends Controller
      */
     public function index()
     {
-        $pizzas = Pizza::all();
+        $pizzas = Pizza::with('toppings')->get();
 
         return view('pizza.index', compact('pizzas'));
     }
