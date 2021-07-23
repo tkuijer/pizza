@@ -24,9 +24,15 @@ class CartController extends Controller
     public function add_pizza(AddPizzaToCartRequest $request)
     {
         $cart = Cart::getCurrentCart();
-        $pizza = Pizza::find((int)$request->pizza_id);
+        $pizzaId = (int)$request->pizza_id;
+        $pizza = Pizza::find($pizzaId);
 
-        $cart->pizzas()->attach($pizza);
+        if ( ! $cart->pizzas->contains($pizza)) {
+            $cart->pizzas()->attach($pizza);
+        } else {
+            $quantity = $cart->pizzas->firstWhere('id', $pizzaId)->pivot->quantity + 1;
+            $cart->pizzas()->syncWithoutDetaching([$pizzaId => ['quantity' => $quantity]]);
+        }
 
         return redirect()
             ->route('cart.index')

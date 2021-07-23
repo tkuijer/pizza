@@ -33,17 +33,19 @@ class Cart extends Model
     }
 
     /**
-     * @return Cart
+     * @return Model
      */
     public static function getCurrentCart()
     {
         $cart_id = (int)session('cart_id');
 
-        return static::with('pizzas')->firstWhere(app(static::class)->getKeyName(), $cart_id);
+        return static::with(['pizzas', 'pizzas.toppings'])->firstWhere((new static)->getKeyName(), $cart_id);
     }
 
     public function pizzas()
     {
-        return $this->belongsToMany(Pizza::class);
+        return $this
+            ->belongsToMany(Pizza::class)
+            ->withPivot('quantity');
     }
 }
