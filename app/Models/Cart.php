@@ -39,7 +39,7 @@ class Cart extends Model
     {
         $cart_id = (int)session('cart_id');
 
-        return static::find($cart_id);
+        return static::with('pizzas')->firstWhere(app(static::class)->getKeyName(), $cart_id);
     }
 
     public function pizzas()

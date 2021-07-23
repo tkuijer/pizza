@@ -7,7 +7,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-600">
                     <ul>
-                        @foreach($pizzas as $pizza)
+                        @foreach($cart->pizzas as $pizza)
                             <li class="border-gray-800 p-6 bg-white border-b">
                                 <h3 class="font-semibold text-xl text-gray-800 leading-tight inline-block">
                                     {{ $pizza->name }}

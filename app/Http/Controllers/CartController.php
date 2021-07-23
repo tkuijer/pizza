@@ -10,6 +10,13 @@ use App\Http\Requests\AddPizzaToCartRequest;
 class CartController extends Controller
 {
 
+    public function index()
+    {
+        $cart = Cart::getCurrentCart();
+
+        return view('cart.index', compact('cart'));
+    }
+
     /**
      * @param AddPizzaToCartRequest $request
      * @return RedirectResponse
@@ -22,7 +29,7 @@ class CartController extends Controller
         $cart->pizzas()->attach($pizza);
 
         return redirect()
-            ->back()
+            ->route('cart.index')
             ->with('success', __('Pizza added to cart!'));
     }
 }

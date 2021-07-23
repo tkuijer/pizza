@@ -20,13 +20,17 @@ use App\Http\Controllers\PizzaToppingsController;
 |
 */
 
-Route::get('/', [IndexController::class, 'index'])
-    ->name('homepage')
-    ->middleware(WithCart::class);
+Route::middleware([WithCart::class])
+    ->group(function() {
+        Route::get('/', [IndexController::class, 'index'])
+            ->name('homepage');
 
-Route::get('/add_pizza', [CartController::class, 'add_pizza'])
-    ->name('add_pizza_to_cart')
-    ->middleware(WithCart::class);
+        Route::get('/add_pizza', [CartController::class, 'add_pizza'])
+            ->name('add_pizza_to_cart');
+
+        Route::get('/cart', [CartController::class, 'index'])
+            ->name('cart.index');
+    });
 
 Route::view('/tailwind', 'tailwind');
 
