@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Pizza\Requests;
 
-use App\Models\Pizza;
+use App\Pizza\Pizza;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class AddPizzaToCartRequest extends FormRequest
+class StorePizzaRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -15,7 +15,7 @@ class AddPizzaToCartRequest extends FormRequest
      */
     public function authorize()
     {
-        return session()->has('cart_id');
+        return Auth::check();
     }
 
     /**
@@ -25,8 +25,6 @@ class AddPizzaToCartRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'pizza_id' => 'required|exists:pizzas,id'
-        ];
+        return Pizza::$validationRules;
     }
 }

@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Pizza\Controllers;
 
-use App\Models\Pizza;
+use App\Pizza\Pizza;
 use Illuminate\Http\Response;
 use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\StorePizzaRequest;
-use App\Http\Requests\UpdatePizzaRequest;
+use App\Pizza\Requests\StorePizzaRequest;
+use App\Pizza\Requests\UpdatePizzaRequest;
 
 class PizzaController extends Controller
 {
@@ -31,7 +32,7 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        return view('pizza.create');
+        return view('admin.pizza.create');
     }
 
     /**

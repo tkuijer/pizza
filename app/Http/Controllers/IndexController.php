@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pizza;
+use App\Pizza\Pizza;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller

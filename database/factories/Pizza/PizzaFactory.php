@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Pizza;
 
-use App\Models\Pizza;
+use App\Pizza\Pizza;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PizzaFactory extends Factory

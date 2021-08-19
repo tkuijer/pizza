@@ -4,7 +4,7 @@ use App\Http\Middleware\WithCart;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\PizzaController;
+use App\Pizza\Controllers\PizzaController;
 use App\Http\Controllers\ToppingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PizzaToppingsController;
