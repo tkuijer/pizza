@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Pizza\Pizza;
 use App\Models\Topping;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PizzaCrudTest extends TestCase
@@ -25,7 +24,7 @@ class PizzaCrudTest extends TestCase
     }
 
     /** @test */
-    function it_shows_a_listing_of_pizzas()
+    public function it_shows_a_listing_of_pizzas()
     {
         $pizzas = $this->createPizzas(3);
 
@@ -33,17 +32,17 @@ class PizzaCrudTest extends TestCase
             ->get(route('pizza.index'));
 
         $response->assertStatus(200);
-        $pizzas->each(function(Pizza $pizza) use ($response) {
+        $pizzas->each(function (Pizza $pizza) use ($response) {
             $response->assertSee($pizza->name);
         });
     }
 
     /** @test */
-    function it_can_create_a_pizza()
+    public function it_can_create_a_pizza()
     {
         $response = $this->actingAs($this->user)
             ->post(route('pizza.store'), [
-                'name' => 'Testing Pizza'
+                'name' => 'Testing Pizza',
             ]);
 
         $response->assertStatus(302);
@@ -53,10 +52,10 @@ class PizzaCrudTest extends TestCase
     }
 
     /** @test */
-    function it_can_delete_a_pizza()
+    public function it_can_delete_a_pizza()
     {
         $pizza = Pizza::factory()->create([
-            'name' => 'Testing Pizza'
+            'name' => 'Testing Pizza',
         ]);
 
         $response = $this->actingAs($this->user)->delete(route('pizza.destroy', $pizza));
@@ -69,15 +68,15 @@ class PizzaCrudTest extends TestCase
     }
 
     /** @test */
-    function it_can_update_a_pizza()
+    public function it_can_update_a_pizza()
     {
         $pizza = Pizza::factory()->create([
-            'name' => 'Testing Pizza'
+            'name' => 'Testing Pizza',
         ]);
 
         $response = $this->actingAs($this->user)
             ->patch(route('pizza.update', $pizza), [
-                'name' => 'Updated testing pizza'
+                'name' => 'Updated testing pizza',
             ]);
 
         $pizza = $pizza->fresh();

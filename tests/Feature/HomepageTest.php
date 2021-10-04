@@ -13,7 +13,7 @@ class HomepageTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function it_shows_pizzas_on_the_homepage()
+    public function it_shows_pizzas_on_the_homepage()
     {
         $pizza = $this->createPizza();
         $response = $this->get('/');
@@ -23,7 +23,7 @@ class HomepageTest extends TestCase
     }
 
     /** @test */
-    function it_shows_pizza_toppings_on_the_homepage()
+    public function it_shows_pizza_toppings_on_the_homepage()
     {
         $toppings = $this->createToppings(2);
         $pizza = $this->createPizza();
@@ -40,7 +40,7 @@ class HomepageTest extends TestCase
     private function createPizza(string $name = 'Pizza 1'): Pizza
     {
         return Pizza::factory()->create([
-            'name' => $name
+            'name' => $name,
         ]);
     }
 

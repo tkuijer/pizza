@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class ToppingSeeder extends Seeder
 {
-
     public static $_seed = [
         'Pizza Sauce',
         'BBQ Sauce',
@@ -40,7 +39,7 @@ class ToppingSeeder extends Seeder
 
         foreach (static::$_seed as $topping) {
             Topping::create([
-                'name' => $topping
+                'name' => $topping,
             ]);
         }
     }

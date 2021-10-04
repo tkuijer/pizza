@@ -21,7 +21,7 @@ use App\Http\Controllers\PizzaToppingsController;
 */
 
 Route::middleware([WithCart::class])
-    ->group(function() {
+    ->group(function () {
         Route::get('/', [IndexController::class, 'index'])
             ->name('homepage');
 
@@ -37,7 +37,6 @@ Route::view('/tailwind', 'tailwind');
 Route::middleware(['auth'])
     ->prefix('dashboard')
     ->group(function () {
-
         Route::get('/', [DashboardController::class, 'index'])
             ->name('dashboard');
 
@@ -48,4 +47,4 @@ Route::middleware(['auth'])
         ]);
     });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
