@@ -25,6 +25,5 @@ class PizzaSeeder extends Seeder
                 $toppings = Topping::all()->random(rand(3, 6));
                 $pizza->toppings()->saveMany($toppings);
             });
-
     }
 }

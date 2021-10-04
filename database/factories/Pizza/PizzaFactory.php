@@ -22,7 +22,7 @@ class PizzaFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'Pizza di ' . $this->faker->city
+            'name' => 'Pizza di '.$this->faker->city,
         ];
     }
 }

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-
     public function index(Request $request)
     {
         $pizzas = Pizza::with('toppings')->get();

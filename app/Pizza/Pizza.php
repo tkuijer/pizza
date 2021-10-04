@@ -13,7 +13,7 @@ class Pizza extends Model
     protected $guarded = [];
 
     public static $validationRules = [
-        'name' => 'required|unique:pizzas,name'
+        'name' => 'required|unique:pizzas,name',
     ];
 
     public function toppings()

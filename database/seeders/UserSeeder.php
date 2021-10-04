@@ -9,12 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
-
-    static $_users = [
+    public static $_users = [
         [
             'name' => 'Tom Kuijer',
             'password' => 'tomkuijer',
-            'email' => 'admin@localhost'
+            'email' => 'admin@localhost',
         ],
     ];
 

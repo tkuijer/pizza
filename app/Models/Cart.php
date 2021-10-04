@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Prunable;
 
 class Cart extends Model
 {
-
     use Prunable;
 
     protected $guarded = [];
@@ -37,7 +36,7 @@ class Cart extends Model
      */
     public static function getCurrentCart()
     {
-        $cart_id = (int)session('cart_id');
+        $cart_id = (int) session('cart_id');
 
         return static::with(['pizzas', 'pizzas.toppings'])->firstWhere((new static)->getKeyName(), $cart_id);
     }

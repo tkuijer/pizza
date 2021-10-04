@@ -35,13 +35,13 @@ class ToppingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param CreateToppingRequest $request
+     * @param  CreateToppingRequest  $request
      * @return RedirectResponse
      */
     public function store(CreateToppingRequest $request)
     {
         $topping = Topping::create([
-            'name' => $request->get('name')
+            'name' => $request->get('name'),
         ]);
 
         return redirect()
@@ -52,7 +52,7 @@ class ToppingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Topping $topping
+     * @param  Topping  $topping
      * @return \Illuminate\Http\Response
      */
     public function show(Topping $topping)
@@ -63,7 +63,7 @@ class ToppingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Topping $topping
+     * @param  Topping  $topping
      * @return View
      */
     public function edit(Topping $topping)
@@ -74,8 +74,8 @@ class ToppingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateToppingRequest $request
-     * @param Topping $topping
+     * @param  UpdateToppingRequest  $request
+     * @param  Topping  $topping
      * @return RedirectResponse
      */
     public function update(UpdateToppingRequest $request, Topping $topping)
@@ -91,7 +91,7 @@ class ToppingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Topping $topping
+     * @param  Topping  $topping
      * @return \Illuminate\Http\Response
      */
     public function destroy(Topping $topping)

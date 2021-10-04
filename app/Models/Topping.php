@@ -12,7 +12,7 @@ class Topping extends Model
     protected $guarded = [];
 
     public static $validationRules = [
-        'name' => 'required|unique:toppings,name'
+        'name' => 'required|unique:toppings,name',
     ];
 
     public function pizzas()

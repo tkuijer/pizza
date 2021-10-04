@@ -9,7 +9,6 @@ use App\Http\Requests\AddPizzaToCartRequest;
 
 class CartController extends Controller
 {
-
     public function index()
     {
         $cart = Cart::getCurrentCart();
@@ -18,16 +17,16 @@ class CartController extends Controller
     }
 
     /**
-     * @param AddPizzaToCartRequest $request
+     * @param  AddPizzaToCartRequest  $request
      * @return RedirectResponse
      */
     public function add_pizza(AddPizzaToCartRequest $request)
     {
         $cart = Cart::getCurrentCart();
-        $pizzaId = (int)$request->pizza_id;
+        $pizzaId = (int) $request->pizza_id;
         $pizza = Pizza::find($pizzaId);
 
-        if ( ! $cart->pizzas->contains($pizza)) {
+        if (! $cart->pizzas->contains($pizza)) {
             $cart->pizzas()->attach($pizza);
         } else {
             $quantity = $cart->pizzas->firstWhere('id', $pizzaId)->pivot->quantity + 1;

@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class AddPizzaToCartRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,7 +24,7 @@ class AddPizzaToCartRequest extends FormRequest
     public function rules()
     {
         return [
-            'pizza_id' => 'required|exists:pizzas,id'
+            'pizza_id' => 'required|exists:pizzas,id',
         ];
     }
 }
