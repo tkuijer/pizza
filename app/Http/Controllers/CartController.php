@@ -13,7 +13,7 @@ class CartController extends Controller
     {
         $cart = Cart::getCurrentCart();
 
-        return view('cart.index', compact('cart'));
+        return view('cart.index', ['cart'=>$cart]);
     }
 
     /**
