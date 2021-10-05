@@ -2,13 +2,13 @@
 
 namespace Tests\Feature;
 
-use DB;
-use Tests\TestCase;
+use App\Models\Topping;
 use App\Models\User;
 use App\Pizza\Pizza;
-use App\Models\Topping;
+use DB;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class PizzaCrudTest extends TestCase
 {

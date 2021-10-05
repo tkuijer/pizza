@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddPizzaToCartRequest;
 use App\Models\Cart;
 use App\Models\Pizza;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\AddPizzaToCartRequest;
 
 class CartController extends Controller
 {
@@ -13,11 +13,12 @@ class CartController extends Controller
     {
         $cart = Cart::getCurrentCart();
 
-        return view('cart.index', ['cart'=>$cart]);
+        return view('cart.index', ['cart' => $cart]);
     }
 
     /**
-     * @param  AddPizzaToCartRequest  $request
+     * @param AddPizzaToCartRequest $request
+     *
      * @return RedirectResponse
      */
     public function add_pizza(AddPizzaToCartRequest $request)

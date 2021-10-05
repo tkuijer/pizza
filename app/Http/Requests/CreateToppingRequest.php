@@ -3,8 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Models\Topping;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CreateToppingRequest extends FormRequest
 {
