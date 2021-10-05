@@ -3,8 +3,8 @@
 namespace App\Pizza\Requests;
 
 use App\Pizza\Pizza;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdatePizzaRequest extends FormRequest
 {

@@ -2,13 +2,13 @@
 
 namespace App\Pizza\Controllers;
 
-use App\Pizza\Pizza;
-use Illuminate\Http\Response;
-use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
+use App\Pizza\Pizza;
 use App\Pizza\Requests\StorePizzaRequest;
 use App\Pizza\Requests\UpdatePizzaRequest;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 
 class PizzaController extends Controller
 {
@@ -37,7 +37,8 @@ class PizzaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StorePizzaRequest  $request
+     * @param StorePizzaRequest $request
+     *
      * @return RedirectResponse
      */
     public function store(StorePizzaRequest $request)
@@ -54,7 +55,8 @@ class PizzaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Pizza  $pizza
+     * @param Pizza $pizza
+     *
      * @return Response
      */
     public function show(Pizza $pizza)
@@ -65,7 +67,8 @@ class PizzaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Pizza  $pizza
+     * @param Pizza $pizza
+     *
      * @return Response|View
      */
     public function edit(Pizza $pizza)
@@ -78,8 +81,9 @@ class PizzaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdatePizzaRequest  $request
-     * @param  Pizza  $pizza
+     * @param UpdatePizzaRequest $request
+     * @param Pizza              $pizza
+     *
      * @return RedirectResponse
      */
     public function update(UpdatePizzaRequest $request, Pizza $pizza)
@@ -95,7 +99,8 @@ class PizzaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Pizza  $pizza
+     * @param Pizza $pizza
+     *
      * @return RedirectResponse
      */
     public function destroy(Pizza $pizza)
